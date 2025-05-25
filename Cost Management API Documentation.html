@@ -1,0 +1,189 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="cost-management-system">Cost Management System</h1>
+<h2 id="cost-management">1. Cost Management</h2>
+<h3 id="get-apicostmanagementgetall">GET /api/CostManagement/GetAll</h3>
+<p><strong>Description</strong>: Retrieve all cost entries.<br>
+<strong>Response</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"Cloud hosting fees"</span><span class="token punctuation">,</span>
+        <span class="token string">"amount"</span><span class="token punctuation">:</span> <span class="token number">350.75</span><span class="token punctuation">,</span>
+        <span class="token string">"date"</span><span class="token punctuation">:</span> <span class="token string">"2024-11-12T09:00:00"</span><span class="token punctuation">,</span>
+        <span class="token string">"category"</span><span class="token punctuation">:</span> <span class="token string">"IT Services"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<h3 id="post-apicostmanagementaddentry">POST /api/CostManagement/AddEntry</h3>
+<p><strong>Description</strong>: Create a new cost entry.<br>
+<strong>Request</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+    <span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"Team building event"</span><span class="token punctuation">,</span>
+    <span class="token string">"amount"</span><span class="token punctuation">:</span> <span class="token number">580.00</span><span class="token punctuation">,</span>
+    <span class="token string">"category"</span><span class="token punctuation">:</span> <span class="token string">"HR"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>Response</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+    <span class="token string">"id"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"description"</span><span class="token punctuation">:</span> <span class="token string">"Team building event"</span><span class="token punctuation">,</span>
+    <span class="token string">"amount"</span><span class="token punctuation">:</span> <span class="token number">580.00</span><span class="token punctuation">,</span>
+    <span class="token string">"date"</span><span class="token punctuation">:</span> <span class="token string">"2024-11-13T14:45:00"</span><span class="token punctuation">,</span>
+    <span class="token string">"category"</span><span class="token punctuation">:</span> <span class="token string">"HR"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>}</p>
+<h2 id="invoice-management">2. Invoice Management</h2>
+<h3 id="get-apiinvoice">GET /api/Invoice</h3>
+<p><strong>Description</strong>: Retrieve all invoices.<br>
+<strong>Response</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        <span class="token string">"invoiceId"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+        <span class="token string">"clientName"</span><span class="token punctuation">:</span> <span class="token string">"Acme Corp"</span><span class="token punctuation">,</span>
+        <span class="token string">"subtotal"</span><span class="token punctuation">:</span> <span class="token number">900.00</span><span class="token punctuation">,</span>
+        <span class="token string">"tax"</span><span class="token punctuation">:</span> <span class="token number">45.00</span><span class="token punctuation">,</span>
+        <span class="token string">"discount"</span><span class="token punctuation">:</span> <span class="token number">30.00</span><span class="token punctuation">,</span>
+        <span class="token string">"grandTotal"</span><span class="token punctuation">:</span> <span class="token number">915.00</span><span class="token punctuation">,</span>
+        <span class="token string">"items"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+	            <span class="token string">"id"</span><span class="token punctuation">:</span>  <span class="token number">1</span><span class="token punctuation">,</span>
+                <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Software Licensing"</span><span class="token punctuation">,</span>
+                <span class="token string">"unitPrice"</span><span class="token punctuation">:</span> <span class="token number">450.00</span><span class="token punctuation">,</span>
+                <span class="token string">"quantity"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+                <span class="token string">"invoiceId"</span><span class="token punctuation">:</span> <span class="token number">1</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<h3 id="get-apiinvoiceinvoiceid">GET /api/Invoice/{invoiceId}</h3>
+<p><strong>Description</strong>: Retrieve specific invoice by ID.<br>
+<strong>Response</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+    <span class="token string">"invoiceId"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"clientName"</span><span class="token punctuation">:</span> <span class="token string">"Acme Corp"</span><span class="token punctuation">,</span>
+    <span class="token string">"subtotal"</span><span class="token punctuation">:</span> <span class="token number">900.00</span><span class="token punctuation">,</span>
+    <span class="token string">"tax"</span><span class="token punctuation">:</span> <span class="token number">45.00</span><span class="token punctuation">,</span>
+    <span class="token string">"discount"</span><span class="token punctuation">:</span> <span class="token number">30.00</span><span class="token punctuation">,</span>
+    <span class="token string">"grandTotal"</span><span class="token punctuation">:</span> <span class="token number">915.00</span><span class="token punctuation">,</span>
+    <span class="token string">"items"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+	        <span class="token string">"id"</span><span class="token punctuation">:</span>  <span class="token number">1</span><span class="token punctuation">,</span>
+            <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Software Licensing"</span><span class="token punctuation">,</span>
+            <span class="token string">"unitPrice"</span><span class="token punctuation">:</span> <span class="token number">450.00</span><span class="token punctuation">,</span>
+            <span class="token string">"quantity"</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+            <span class="token string">"invoiceId"</span><span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="post-apiinvoicegenerate">POST /api/Invoice/Generate</h3>
+<p><strong>Description</strong>: Create new invoice.<br>
+<strong>Request</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+  <span class="token string">"clientId"</span><span class="token punctuation">:</span> <span class="token number">2045</span><span class="token punctuation">,</span>
+  <span class="token string">"tax"</span><span class="token punctuation">:</span> <span class="token number">15</span><span class="token punctuation">,</span>
+  <span class="token string">"discount"</span><span class="token punctuation">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+  <span class="token string">"items"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+          <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Software Licensing"</span><span class="token punctuation">,</span>
+          <span class="token string">"unitPrice"</span><span class="token punctuation">:</span> <span class="token number">450.00</span><span class="token punctuation">,</span>
+          <span class="token string">"quantity"</span><span class="token punctuation">:</span> <span class="token number">2</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>Response</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+	<span class="token string">"id"</span><span class="token punctuation">:</span>  <span class="token number">5</span><span class="token punctuation">,</span>
+	<span class="token string">"clientId"</span><span class="token punctuation">:</span>  <span class="token number">2045</span><span class="token punctuation">,</span>
+	<span class="token string">"tax"</span><span class="token punctuation">:</span>  <span class="token number">15</span><span class="token punctuation">,</span>
+	<span class="token string">"discount"</span><span class="token punctuation">:</span>  <span class="token number">10</span><span class="token punctuation">,</span>
+	<span class="token string">"items"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span>
+		<span class="token string">"id"</span><span class="token punctuation">:</span>  <span class="token number">9</span><span class="token punctuation">,</span>
+		<span class="token string">"name"</span><span class="token punctuation">:</span>  <span class="token string">"Software Licensing"</span><span class="token punctuation">,</span>
+		<span class="token string">"quantity"</span><span class="token punctuation">:</span>  <span class="token number">2</span><span class="token punctuation">,</span>
+		<span class="token string">"unitPrice"</span><span class="token punctuation">:</span>  <span class="token number">450</span><span class="token punctuation">,</span>
+		<span class="token string">"invoiceId"</span><span class="token punctuation">:</span>  <span class="token number">5</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="put-apiinvoiceinvoiceidedit">PUT /api/Invoice/{invoiceId}/Edit</h3>
+<p><strong>Description</strong>: Update existing invoice.<br>
+<strong>Request</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">[</span>
+	<span class="token punctuation">{</span>
+		<span class="token string">"name"</span><span class="token punctuation">:</span>  <span class="token string">"Premium Support Plan"</span><span class="token punctuation">,</span>
+		<span class="token string">"unitPrice"</span><span class="token punctuation">:</span>  <span class="token number">600.00</span><span class="token punctuation">,</span>
+		<span class="token string">"quantity"</span><span class="token punctuation">:</span>  <span class="token number">1</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">]</span>
+</code></pre>
+<p><strong>Response</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+	<span class="token string">"id"</span><span class="token punctuation">:</span>  <span class="token number">1</span><span class="token punctuation">,</span>
+	<span class="token string">"clientId"</span><span class="token punctuation">:</span>  <span class="token number">2</span><span class="token punctuation">,</span>
+	<span class="token string">"tax"</span><span class="token punctuation">:</span>  <span class="token number">14</span><span class="token punctuation">,</span>
+	<span class="token string">"discount"</span><span class="token punctuation">:</span>  <span class="token number">10</span><span class="token punctuation">,</span>
+	<span class="token string">"items"</span><span class="token punctuation">:</span>  <span class="token punctuation">[</span>
+		<span class="token punctuation">{</span>
+			<span class="token string">"id"</span><span class="token punctuation">:</span>  <span class="token number">10</span><span class="token punctuation">,</span>
+			<span class="token string">"name"</span><span class="token punctuation">:</span>  <span class="token string">"Premium Support Plan"</span><span class="token punctuation">,</span>
+			<span class="token string">"quantity"</span><span class="token punctuation">:</span>  <span class="token number">1</span><span class="token punctuation">,</span>
+			<span class="token string">"unitPrice"</span><span class="token punctuation">:</span>  <span class="token number">600</span><span class="token punctuation">,</span>
+			<span class="token string">"invoiceId"</span><span class="token punctuation">:</span>  <span class="token number">1</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h3 id="post-apiinvoicesendreminder">POST /api/Invoice/SendReminder</h3>
+<p><strong>Description</strong>: Send payment reminder.<br>
+<strong>Request</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+    <span class="token string">"invoiceId"</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token string">"dueDate"</span><span class="token punctuation">:</span> <span class="token string">"2025-07-01"</span><span class="token punctuation">,</span>
+    <span class="token string">"clientEmail"</span><span class="token punctuation">:</span> <span class="token string">"test@example.com"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>Response</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+
+	<span class="token string">"clientEmail"</span><span class="token punctuation">:</span>  <span class="token string">"test@example.com"</span><span class="token punctuation">,</span>
+	<span class="token string">"subject"</span><span class="token punctuation">:</span>  <span class="token string">"Reminder: Invoice 1 is due soon"</span><span class="token punctuation">,</span>
+	<span class="token string">"body"</span><span class="token punctuation">:</span>  <span class="token string">"Dear client, your invoice with Id : 1 with a total price of 16800 is due in 2 days on July 01, 2025. Please make payment on time."</span>
+
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="tax">3. Tax</h2>
+<h3 id="post-apitaxcalculate">POST /api/Tax/Calculate</h3>
+<p><strong>Description</strong>: Calculate taxes.<br>
+<strong>Request</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+    <span class="token string">"subtotal"</span><span class="token punctuation">:</span> <span class="token number">2500</span><span class="token punctuation">,</span>
+    <span class="token string">"taxRate"</span><span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token string">"region"</span><span class="token punctuation">:</span> <span class="token string">"UK"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>Response</strong>:</p>
+<pre class=" language-json"><code class="prism  language-json"><span class="token punctuation">{</span>
+	<span class="token string">"taxAmount"</span><span class="token punctuation">:</span>  <span class="token number">500.0</span><span class="token punctuation">,</span>
+	<span class="token string">"totalWithTax"</span><span class="token punctuation">:</span>  <span class="token number">3000.0</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</div>
+</body>
+
+</html>
